@@ -57,7 +57,8 @@ jobs:
           "$HOME/.local/bin/godot" --version
 
       - name: Import project
-        run: "$HOME/.local/bin/godot" --headless --path . --import
+        run: |
+          "$HOME/.local/bin/godot" --headless --path . --import
 
       - name: Export Web build
         run: |

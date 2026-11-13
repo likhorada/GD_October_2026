@@ -33,15 +33,21 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          pages_json=$(curl -s \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")
           http_code=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")
-          if [ "$http_code" = "200" ]; then
+          build_type=$(echo "$pages_json" | jq -r '.build_type // "unknown"')
+
+          if [ "$http_code" = "200" ] && [ "$build_type" = "workflow" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::GitHub Pages is not enabled. Go to Settings > Pages > Source: GitHub Actions, then re-run this workflow."
+            echo "::warning::GitHub Pages is not ready (HTTP $http_code, build_type: $build_type). Go to Settings > Pages > Source: GitHub Actions, then re-run this workflow."
           fi
 
       - name: Cache Godot editor and export templates

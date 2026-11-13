@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	GameState.reset_run()
-	SceneRouter.change_scene("res://scenes/dev/PlaceholderGame.tscn")
+	SceneRouter.change_scene("res://scenes/dev/HairTest.tscn")
 
 
 func _on_settings_pressed() -> void:

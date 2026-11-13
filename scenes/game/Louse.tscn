@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/louse.gd" id="1_louse"]
+[ext_resource type="Texture2D" path="res://assets/sprites/louse.png" id="2_texture"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_louse"]
+radius = 8.0
+
+[node name="Louse" type="CharacterBody2D" groups=["player"]]
+collision_layer = 1
+collision_mask = 0
+z_index = 5
+script = ExtResource("1_louse")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_louse")

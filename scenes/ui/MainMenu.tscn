@@ -47,7 +47,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.647059, 0.568627, 0.501961, 1)
-text = "Прототип: Октябрь"
+text = "M2: волосы и вошь"
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="Center"]
@@ -99,6 +99,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.501961, 0.435294, 0.396078, 1)
-text = "WASD / стрелки — движение, Space — зацепиться, Esc — пауза"
+text = "A/D или W/S — ползти по волосам, Space — зацепиться/отпустить, Esc — меню"
 horizontal_alignment = 1
 vertical_alignment = 1
